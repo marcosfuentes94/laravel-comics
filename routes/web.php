@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComicController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -13,24 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $students = [
-        'Marco',
-        'Gino',
-        'Claudia',
-    ];
 
-    $data = compact('students');
-
-    // dd($data);
-
-    return view('home', $data);
-
-    // return view('home', [
-    //     'students' => $students
-    // ]);
-});
-
-Route::get('/contatti', function () {
-    return view('contact');
-});
+Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
